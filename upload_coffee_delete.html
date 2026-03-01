@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    <title>削除の確認</title>
+</head>
+<body>
+<div id="app">
+<main class="content">
+
+    <h1>データ削除の確認</h1>
+    <h2>ID: {{bean_id}} を本当に削除しますか？</h2>
+    <p >この操作は取り消せません。</p>
+    
+    <p>
+        <a href="/blist/deleted/{{bean_id}}">
+            <button>はい、永遠に削除します</button>
+        </a>
+    </p>
+
+    <p><a href="/detail/{{bean_id}}">キャンセルして詳細画面に戻る</a></p>
+
+</main>
+</div>
+</body>
+</html>

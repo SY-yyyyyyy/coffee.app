@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="/look/coffee_app.css">
+  <title>店舗マップ</title>
+  <style>
+    #map { height: 500px; width: 100%; }
+  </style>
+</head>
+<body>
+<div id="app">
+<h1>登録店舗マップ</h1>
+<div id="map"></div>
+
+<script>
+  // shops配列にstore_idを追加
+  const shops = [
+    %for s in shops:
+      {
+        store_id: {{s[0]}},   // store_id
+        name: "{{s[2]}}",     // store_name
+        lat: {{s[4]}},        // latitude
+        lng: {{s[5]}}         // longitude
+      },
+    %end
+  ];
+
+
+  function initMap() {
+    if (shops.length === 0) return;
+
+    const center = { lat: shops[0].lat, lng: shops[0].lng };
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 15,
+      center: center,
+    });
+    //ピンを表示
+    shops.forEach(shop => {
+    const marker = new google.maps.Marker({
+        position: { lat: shop.lat, lng: shop.lng },
+        map: map,
+        title: shop.name
+    });
+
+    // クリック時に詳細ページへ
+    marker.addListener("click", function() {
+    // 新しく作る「店舗別リスト画面」へ、store_idを持って移動
+    window.location.href = `/shop_beans/${shop.store_id}`;
+    });
+
+});
+  
+  }
+</script>
+
+
+<script src="https://maps.googleapis.com/maps/api/js?key=****GOOGLE_API_KEY*****&callback=initMap"
+        async defer></script>
+
+
+
+
+<p class="home-link"><a href='/home'>ホーム</a></p>
+</div>
+</body>
+</html>

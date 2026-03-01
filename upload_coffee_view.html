@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+</head>
+
+<body>
+    <div id="app">
+    <main class="content">
+    <h1>{{ bean[2] }}</h1>
+
+    <p>豆名：{{ bean[3] }}</p>
+    <p>焙煎度：{{ bean[4] }}</p>
+    
+    <p>購入店舗名：{{shop[2] }}</p>
+    <p>購入日：{{ bean[9] }}</p>
+    <p>価格(円)：{{ bean[10] }}</p>
+    <p>購入量(g)：{{ bean[11] }}</p>
+    <p>コメント：{{ bean[12] }}</p>
+    <div class="box chart-box">
+    <canvas id="myrChart"></canvas>
+</div>
+
+    
+    <a href="/home">ホーム</a>
+    <a href="/blist/map">マップ</a>
+    <a href="/blist/delete/{{bean[0]}}">削除</a>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script>
+    var ctx = document.getElementById("myrChart");
+    var myrChart = new Chart(ctx, {
+        type: 'radar', // レーダーチャート
+        data: {
+            labels: ["酸味", "苦味", "コク", "香り"],
+            datasets: [{
+                label: '評価',
+                data: [{{ bean[5] }}, {{ bean[6] }}, {{ bean[7] }}, {{ bean[8] }}],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 5,
+                    stepSize: 1
+                }
+            }
+        }
+    });
+</script>
+</div>
+</body>
+</html>
+
+<!-- 参考文献 :https://qiita.com/naopin708/items/21c0630cf76805730180-->

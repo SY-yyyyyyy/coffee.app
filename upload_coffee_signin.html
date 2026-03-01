@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    <meta charset="UTF-8">
+    <title>新規登録</title>
+</head>
+<body>
+<div id="app">
+<main class="content">
+
+<h1>新規ユーザー登録</h1>
+
+% if defined('error'):
+<p style="color:red;">{{error}}</p>
+% end
+
+<form method="post" action="/blist/sign_in">
+
+    <div class="box">
+    <label>希望ユーザー名</label><br>
+    <input type="text" name="user_name" required><br><br>
+
+    <label>パスワード</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <input type="submit" value="登録する">
+
+</form>
+
+<br>
+</div>
+
+<a href="/blist/login">ログイン画面に戻る</a>
+
+</main>
+</div>
+</body>
+</html>

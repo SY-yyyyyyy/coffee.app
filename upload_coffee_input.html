@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    
+    <meta charset="UTF-8">
+    <title>入力画面</title>
+    <link rel="stylesheet" href="/look/coffee_app.css">
+</head>
+
+<body>
+<div id="app">
+<main class="content">
+<h1>データの新規作成</h1>
+
+<form action="/blist/new" method="post">
+
+<!---
+    <p>
+        ユーザーID：
+        <input type="text" name="user_id">
+    </p>
+
+-->
+    
+    <p>
+        タイトル　(必須)：
+        <input type="text" name="title_name"required>
+    </p>
+
+    <p>
+        豆の名前　(必須)：
+        <input type="text" name="bean_name"required>
+    </p>
+
+    <p>
+        焙煎度(必須)：
+        <label><input type="radio" name="roast_level" value="1"required></label>
+        <label><input type="radio" name="roast_level" value="2"></label>
+        <label><input type="radio" name="roast_level" value="3"></label>
+        <label><input type="radio" name="roast_level" value="4"></label>
+        <label><input type="radio" name="roast_level" value="5"></label>
+    </p>
+
+    <p>
+        酸味　(必須)：
+        <label><input type="radio" name="acidity" value="1"required></label>
+        <label><input type="radio" name="acidity" value="2"></label>
+        <label><input type="radio" name="acidity" value="3"></label>
+        <label><input type="radio" name="acidity" value="4"></label>
+        <label><input type="radio" name="acidity" value="5"></label>
+    </p>
+
+    <p>
+        苦味　(必須)：
+        <label><input type="radio" name="bitterness" value="1"required></label>
+        <label><input type="radio" name="bitterness" value="2"></label>
+        <label><input type="radio" name="bitterness" value="3"></label>
+        <label><input type="radio" name="bitterness" value="4"></label>
+        <label><input type="radio" name="bitterness" value="5"></label>
+    </p>
+
+    <p>
+        コク　(必須)：
+        <label><input type="radio" name="richness" value="1"required></label>
+        <label><input type="radio" name="richness" value="2"></label>
+        <label><input type="radio" name="richness" value="3"></label>
+        <label><input type="radio" name="richness" value="4"></label>
+        <label><input type="radio" name="richness" value="5"></label>
+    </p>
+
+    <p>
+        香り　(必須)：
+        <label><input type="radio" name="aroma" value="1"required></label>
+        <label><input type="radio" name="aroma" value="2"></label>
+        <label><input type="radio" name="aroma" value="3"></label>
+        <label><input type="radio" name="aroma" value="4"></label>
+        <label><input type="radio" name="aroma" value="5"></label>
+    </p>
+
+    <!-- requiredを付けると警告が出る -->
+    <p>
+    購入店舗名 (必須)：
+    <gm-places-autocomplete id="store-autocomplete">
+        <input type="text" name="store_name" id="store_name" required autocomplete="off">
+    </gm-places-autocomplete>
+</p>
+
+    <!-- Google Places から受け取る値 -->
+    <input type="hidden" name="place_id" id="place_id">
+    <input type="hidden" name="address" id="address">
+    <input type="hidden" name="latitude" id="latitude">
+    <input type="hidden" name="longitude" id="longitude">
+
+    <p>
+    住所：
+    <span id="address_view">（未選択）</span>
+    </p>
+
+    
+    <p>
+        購入日：
+        <input type="date" name="purchase_date">
+    </p>
+
+    <p>
+        価格(円)：
+        <input type="number" name="price">
+    </p>
+
+    <p>
+        購入量(g)：
+        <input type="number" name="amount">
+    </p>
+
+    <p>
+        コメント：
+        <textarea name="comment"></textarea>
+    </p>
+
+    <p>
+        画像URL：
+        <input type="text" name="image_url">
+    </p>
+
+    <input type="submit" value="登録">
+</form>
+
+<p><a href='/home'>ホーム</a></p>
+
+
+<!-- Google Places API -->
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=****GOOGLE_API_KEY*****&libraries=places&callback=initAutocomplete"
+  async defer>
+</script>
+
+<script>
+function initAutocomplete() {
+    const input = document.getElementById("store_name");
+
+    const autocomplete = new google.maps.places.Autocomplete(input, {
+        types: ["establishment"], // 店舗に限定
+        componentRestrictions: { country: "jp" }
+    });
+
+    autocomplete.addListener("place_changed", function () {
+        const place = autocomplete.getPlace();
+
+        if (!place.geometry) {
+            alert("住所情報を取得できませんでした");
+            return;
+        }
+
+        // hidden にセット
+        document.getElementById("store_name").value = place.name;
+        document.getElementById("place_id").value = place.place_id;
+        document.getElementById("address").value = place.formatted_address;
+        document.getElementById("latitude").value =
+            place.geometry.location.lat();
+        document.getElementById("longitude").value =
+            place.geometry.location.lng();
+
+        // 表示用
+        document.getElementById("address_view").innerText =
+            place.formatted_address;
+    });
+}
+</script>
+
+</div>
+</body>
+
+
+</html>

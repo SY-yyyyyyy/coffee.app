@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    <title>傾向分析</title>
+</head>
+<body>
+<div id="app">
+<main class="content">
+
+<h1>平均評価</h1>
+% if defined('error'):
+    <div class="box">
+        <p style="color:red;">{{error}}</p>
+        <a href="/blist/new" class="btn">最初の豆を登録する</a>
+    </div>
+% else:
+
+<div class="box chart-box2">
+<canvas id="analysis_myrCharts"></canvas>
+<p>焙煎度：{{ avg[0] }}</p>
+<p>酸味：{{ avg[1] }}</p>
+<p>苦味：{{ avg[2] }}</p>
+<p>コク：{{ avg[3] }}</p>
+<p>香り：{{ avg[4] }}</p>  
+
+</div>
+
+<h1>おすすめの豆</h1>
+<div class="box">
+<p><strong>豆名：</strong>{{ bean[0] }}</p>
+<p>酸味：{{ bean[1] }}</p>
+<p>苦味：{{ bean[2] }}</p>
+<p>コク：{{ bean[3] }}</p>
+<p>香り：{{ bean[4] }}</p>
+
+<p>平均との差：{{ distance }}</p>
+</div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.bundle.js"></script>
+<script>
+    var ctx = document.getElementById("analysis_myrCharts");
+    var myrChart = new Chart(ctx, {
+        type: 'radar', // レーダーチャート
+        data: {
+            labels: ["焙煎度","酸味", "苦味", "コク", "香り"],
+            datasets: [{
+                label: '評価',
+                data: [{{ avg[0] }},{{ avg[1] }},{{ avg[2] }},{{ avg[3] }}, {{ avg[4] }}],
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255,99,132,1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scale: {
+                ticks: {
+                    beginAtZero: true,
+                    min: 0,
+                    max: 5,
+                    stepSize: 1
+                }
+            }
+        }
+    });
+</script>
+
+<p><a href='/home'>戻る</a></p>
+</div>
+</body>
+</html>

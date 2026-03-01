@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    
+    <meta charset="UTF-8">
+    <title>コーヒー豆一覧</title>
+</head>
+<body>
+<div id="app">
+<main class="content">
+    
+<div class="top-bar">
+    <div class="user-info">
+        <span>ID: {{user_id}}</span>
+        <span>{{user_name}}</span>
+    </div>
+    <a class="logout-btn" href="/blist/login">ログアウト</a>
+</div>
+
+<h1>登録済みコーヒー豆</h1>
+
+
+<ul>
+% for bean in beans:
+    <li>
+        <a href="/detail/{{ bean[0] }}">
+            {{ bean[1] }}
+        </a>
+    </li>
+% end
+</ul>
+
+</main>
+
+
+<nav class="bottom-nav">
+    <a href="/blist/new">記録する</a>
+    <a href="/blist/map">マップ</a>
+    <a href="/blist/analysis">傾向分析</a>
+</nav>
+
+
+</div>
+</body>
+</html>

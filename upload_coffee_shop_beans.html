@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/look/coffee_app.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ shop[2] }} の購入リスト</title>
+</head>
+<body>
+<div id="app">
+<main class="content"> 
+
+    <h2>店舗：{{ shop[2] }}</h2>
+    <p>住所：{{ shop[3] }}</p>
+
+    <hr>
+    <h3>このお店で購入したコーヒー豆一覧</h3>
+
+    % if len(beans) > 0:
+        <ul>
+        % for bean in beans:
+            <li>
+                <strong>{{ bean[3] }}</strong>
+                <br>
+                 タイトル: {{ bean[2] }} / 購入日: {{ bean[9] }}
+                <br>
+                <a href="/detail/{{ bean[0] }}">詳細を見る</a>
+            </li>
+            <hr>
+        % end
+        </ul>
+    % else:
+        <p>この店舗で購入した豆の記録はまだありません。</p>
+    % end
+</main>
+    <p><a href="/blist/map">マップに戻る</a></p>
+    <p><a href="/home">ホームに戻る</a></p>
+</div>
+</body>
+</html>

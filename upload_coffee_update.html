@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>データ更新: {{bean[3]}}</title>
+</head>
+<body>
+    <h1>データの更新 (ID: {{bean[0]}})</h1>
+    <form action="/blist/updated/{{bean[0]}}" method="POST">
+        
+        <p>タイトル: <input type="text" name="title_name" value="{{bean[2]}}"></p>
+        <p>豆の名前: <input type="text" name="bean_name" value="{{bean[3]}}"></p>
+        
+        <p>焙煎度(1-5): <input type="number" name="roast_level" value="{{bean[4]}}" min="1" max="5"></p>
+        <p>酸味(1-5): <input type="number" name="acidity" value="{{bean[5]}}" min="1" max="5"></p>
+        <p>苦味(1-5): <input type="number" name="bitterness" value="{{bean[6]}}" min="1" max="5"></p>
+        <p>コク(1-5): <input type="number" name="richness" value="{{bean[7]}}" min="1" max="5"></p>
+        <p>香り(1-5): <input type="number" name="aroma" value="{{bean[8]}}" min="1" max="5"></p>
+
+        <p>購入日: <input type="date" name="purchase_date" value="{{bean[9]}}"></p>
+        <p>価格(円): <input type="number" name="price" value="{{bean[10]}}"></p>
+        <p>量(g): <input type="number" name="amount" value="{{bean[11]}}"></p>
+        
+        <p>コメント:<br>
+        <textarea name="comment" rows="3" cols="30">{{bean[12]}}</textarea>
+        </p>
+        
+        <p>画像URL: <input type="text" name="image_url" value="{{bean[13]}}"></p>
+
+        <input type="submit" value="更新する">
+    </form>
+    <hr>
+    <p><a href="/blist/view">一覧に戻る</a></p>
+</body>
+</html>
