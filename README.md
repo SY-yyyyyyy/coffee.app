@@ -43,7 +43,7 @@
       
    ②次に、メインアプリの初期設定を行います。
       
-   ブラウザで http://localhost:8782/blist/init にアクセスし、ユーザー・店舗・豆管理用のテーブルを作成します。
+   coffee_app.pyを実行し、ブラウザで http://localhost:8782/blist/init にアクセスしてユーザー・店舗・豆管理用のテーブルを作成します。
   
 4. アプリケーションの起動
    起動後、 http://localhost:8782/blist/login へアクセスしてください。
