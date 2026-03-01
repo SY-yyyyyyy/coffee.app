@@ -27,34 +27,42 @@ Coffee Appは、日々楽しむコーヒーの記録（ログ）を蓄積し、�
 # セットアップ方法
 1. リポジトリのクローン
    
-    リポジトリ内のファイルをダウンロードします
-  
-2. Google APIキーの設定
-   
-   メインのPythonファイル内の GOOGLE_API_KEY 変数に、ご自身のGoogle Cloud Platformで発行したAPIキーを入力してください。
+    プロジェクトをダウンロードします。
 
-    注意: Geocoding API と Maps JavaScript API を有効にする必要があります。
+2.bottleのインストール
+
+   実行に必要なライブラリをインストールします。
+
+      pip install requests bottle
+
+3. Google APIキーの設定
+
+   Google Maps機能を利用するため、APIキーの設定が必要です。
+   
+   ファイル内の GOOGLE_API_KEY 変数に、ご自身のGoogle Cloud Platformで発行したAPIキーを入力してください。
+
+    注意: Geocoding API と Maps JavaScript API 、Places APIを有効にする必要があります。
    
     変更必要ファイル
 
        ・coffee_app.py
        ・upload_coffee_map.html
-       ・upload_coffee_input.htm
+       ・upload_coffee_input.html
 
-4. データベースの初期化
+4. データベースの用意
 
-
-   アプリを起動する前に、マスタデータの取得とユーザー用テーブルを作成する必要があります。
+   アプリを起動する前に、豆のマスタデータの取得とユーザー用テーブルを作成する必要があります。
 
    ①まず、豆のマスタデータを取得します。
       
-   bean_master.pyを実行し、ブラウザで http://localhost:8782/blist/bean にアクセスして初期化を完了させます。
+   bean_master.pyを実行し、ブラウザで http://localhost:8782/blist/bean にアクセスしてデータの取得を完了させます。
       
    ②次に、メインアプリの初期設定を行います。
       
    coffee_app.pyを実行し、ブラウザで http://localhost:8782/blist/init にアクセスしてユーザー・店舗・豆管理用のテーブルを作成します。
   
 4. アプリケーションの起動
+   
    起動後、 http://localhost:8782/blist/login へアクセスしてください。
 
 # 使い方
