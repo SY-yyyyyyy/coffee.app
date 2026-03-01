@@ -14,7 +14,7 @@
 ユークリッド距離を用いたアルゴリズムにより、マスタデータ（17種類の代表的な豆）の中から、あなたの好みに最も近い豆を自動でおすすめします。
 
 
-# スクリーンショット
+
 # セットアップ方法
 1. リポジトリのクローン
    
@@ -54,10 +54,14 @@
 1.ユーザー登録・ログイン
 
    ①アクセス: ブラウザで http://localhost:8782/blist/login にアクセスします。
-   
+   <img width="150" height="350" alt="スクリーンショット 2026-03-01 144837" src="https://github.com/user-attachments/assets/1a43e9b6-f5f9-4608-8593-650285bdbf55" />
+
    ②アカウント作成: 初めての方は「サインイン（新規登録）」からユーザー情報を登録してください。
-   
+   <img width="150" height="350" alt="スクリーンショット 2026-03-01 144854" src="https://github.com/user-attachments/assets/03960614-2e86-4fae-9752-72a471d40da6" />
+   <img width="150" height="350" alt="スクリーンショット 2026-03-01 144912" src="https://github.com/user-attachments/assets/a817281d-e500-437a-b0e3-cfc7d8a24c94" />
+
    ③ログイン: 登録したユーザー名とパスワードを入力してログインすると、個人の専用ホーム画面へ遷移します。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 144929" src="https://github.com/user-attachments/assets/f10dec20-2c54-4d7f-9952-58d5cdd04ff9" />
 
 2.コーヒー豆の記録
 
@@ -66,23 +70,30 @@
    ①入力: ホーム画面の「記録する」ボタンをクリックし、記録画面へ進みます。
 
    ②詳細設定: 豆の名前、焙煎度、味わい（酸味・苦味・コク・香り）などの項目を入力します。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145040" src="https://github.com/user-attachments/assets/aad4c773-7745-4488-b164-7a645f759966" />
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145115" src="https://github.com/user-attachments/assets/17bb836f-ab44-4100-b078-ca6c082eb778" />
 
    ③保存: 登録ボタンを押し、詳細画面が表示されれば完了です。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145126" src="https://github.com/user-attachments/assets/c144d220-039e-4d43-84ae-95cf739dd550" />
 
 3.登録店舗マップ
 
 登録した情報を地図上で視覚的に管理できます。
 
    ①マップ表示: ホーム画面から「マップ」をクリックします。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 150746" src="https://github.com/user-attachments/assets/336e3653-0651-456c-9c61-bcb27192ce64" />
 
    ②情報の確認:
 
    入力した住所に基づき、地図上にピンが表示されます。
    
    ピンをクリックすると、店舗名・住所・そのお店で購入した豆の一覧がポップアップで表示されます。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145137" src="https://github.com/user-attachments/assets/9e3763c3-35da-4a5c-aa74-8ca5edace713" />
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145145" src="https://github.com/user-attachments/assets/743f3ee7-8fff-445d-aa30-f60ba38e4575" />
 
    ③詳細連携
    ポップアップ内の「詳細を見る」をクリックすると、個別の登録情報を素早く確認できます。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145154" src="https://github.com/user-attachments/assets/e31ae030-f0dc-4048-8af5-6633a430cb1d" />
 
 4.傾向分析
 
@@ -91,8 +102,10 @@
    ①分析実行: ホーム画面から「傾向分析」をクリックします。
 
    ②平均評価の算出: これまでに入力した全データの平均値（酸味、苦味などのレーダーチャートの基データ）を表示します。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145204" src="https://github.com/user-attachments/assets/2517b6ab-7df7-4b15-94c0-aa2a68e56fc2" />
 
    ③おすすめ提案: あなたの好みの傾向に近いコーヒー豆（例：キリマンジャロ、マンデリン等）が、計算アルゴリズムに基づいて提案されます。
+<img width="150" height="350" alt="スクリーンショット 2026-03-01 145212" src="https://github.com/user-attachments/assets/7c78d42e-3f6a-421e-8fb4-d7347c230bc2" />
 
 # 使用技術
 フロントエンド：Javascript、HTML、CSS
