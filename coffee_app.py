@@ -1,21 +1,20 @@
 import sqlite3
 import requests
 import os
+from bottle import post,get,request,route,run,template,TEMPLATE_PATH,redirect,response,static_file
 #APIキー
 GOOGLE_API_KEY ="****GOOGLE_API_KEY*****"
-from bottle import post,get,request,route,run,template,TEMPLATE_PATH,redirect,response,static_file
 
- #HTMLファイルにつなぐ
-TEMPLATE_PATH.append(r"C:\Users\yyyuu\views")
- #CSSファイルにつなぐ
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+VIEWS_DIR = os.path.join(BASE_DIR, "views")
+STATIC_DIR = os.path.join(VIEWS_DIR, "look")
 
+if VIEWS_DIR not in TEMPLATE_PATH:
+    TEMPLATE_PATH.append(VIEWS_DIR)
+ 
 @route('/look/<filename>')
 def server_static(filename):
-    return static_file(
-        filename,
-        root=r'C:\Users\yyyuu\views\look'
-    )
+   return static_file(filename, root=STATIC_DIR)
 
 
 def get_login_user_id():
@@ -639,3 +638,4 @@ def view():
     return template(tplt, blist=blist, blist_s=blist_s, users=users)
 
 run(host='localhost',port=8782,reloader=True)
+
